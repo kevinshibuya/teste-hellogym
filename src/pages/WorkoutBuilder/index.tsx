@@ -6,7 +6,7 @@ import { SectionHeader } from "../../components/SectionHeader";
 import { Sidebar } from "../../components/Sidebar";
 
 import bicepCurls from "../../assets/bicep-curls.png";
-import { Container } from "./styles";
+import { Container, ExerciseLibrary, Workout } from "./styles";
 
 export function WorkoutBuilder() {
   return (
@@ -15,7 +15,7 @@ export function WorkoutBuilder() {
       <Header />
       <SectionHeader sectionName="Workout Builder" />
       <div className="content">
-        <section className="workout">
+        <Workout>
           <h1 className="title">Workout</h1>
           <label htmlFor="name">Workout Name</label>
           <input className="workout-name" placeholder="Your workout name..." type="text" name="name" id="name" />
@@ -100,10 +100,10 @@ export function WorkoutBuilder() {
               + Add Rest
             </button>
           </div>
-        </section>
-        <section className="exercise-library">
+        </Workout>
+        <ExerciseLibrary>
 
-        </section>
+        </ExerciseLibrary>
       </div>
     </Container>
   )

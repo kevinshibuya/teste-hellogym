@@ -9,8 +9,23 @@ import { Sidebar } from "../../components/Sidebar";
 import bicepCurls from "../../assets/bicep-curls.png";
 import tricepPulldown from "../../assets/tricep-pulldown.png";
 import { Container, ExerciseLibrary, Workout } from "./styles";
+import { ExerciseCard } from '../../components/ExerciseCard';
 
 export function WorkoutBuilder() {
+  const bicepsCard = {
+    src: bicepCurls,
+    alt: 'bicep-curls',
+    name: 'Bicep Curls',
+    type: 'ARMS',
+  }
+  
+  const tricepsCard = {
+    src: tricepPulldown,
+    alt: 'tricep-pulldown',
+    name: 'Tricep Pulldown',
+    type: 'ARMS',
+  }
+
   return (
     <Container>
       <Sidebar />
@@ -194,46 +209,18 @@ export function WorkoutBuilder() {
             + Add A Custom Exercise
           </button>
           <div className="exercise-list">
-            <button className="exercise-card">
-              <img src={bicepCurls} alt="bicep-curls" />
-              <h1>Bicep Curls</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={tricepPulldown} alt="tricep-pulldown" />
-              <h1>Tricep Pulldown</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={bicepCurls} alt="bicep-curls" />
-              <h1>Bicep Curls</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={tricepPulldown} alt="tricep-pulldown" />
-              <h1>Tricep Pulldown</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={bicepCurls} alt="bicep-curls" />
-              <h1>Bicep Curls</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={tricepPulldown} alt="tricep-pulldown" />
-              <h1>Tricep Pulldown</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={bicepCurls} alt="bicep-curls" />
-              <h1>Bicep Curls</h1>
-              <p className="type">ARMS</p>
-            </button>
-            <button className="exercise-card">
-              <img src={tricepPulldown} alt="tricep-pulldown" />
-              <h1>Tricep Pulldown</h1>
-              <p className="type">ARMS</p>
-            </button>
+            <ExerciseCard cardData={bicepsCard} />
+            <ExerciseCard cardData={tricepsCard} />
+            <ExerciseCard cardData={bicepsCard} />
+            <ExerciseCard cardData={tricepsCard} />
+            <ExerciseCard cardData={bicepsCard} />
+            <ExerciseCard cardData={tricepsCard} />
+            <ExerciseCard cardData={bicepsCard} />
+            <ExerciseCard cardData={tricepsCard} />
+            <ExerciseCard cardData={bicepsCard} />
+            <ExerciseCard cardData={tricepsCard} />
+            <ExerciseCard cardData={bicepsCard} />
+            <ExerciseCard cardData={tricepsCard} />
           </div>
           <button className="load-more">
             Load More Exercises

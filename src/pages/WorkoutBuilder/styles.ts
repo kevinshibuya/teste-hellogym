@@ -242,5 +242,85 @@ export const Workout = styled.section`
 `;
 
 export const ExerciseLibrary = styled.section`
+  .searchbar {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-bottom: 1rem;
 
+    input, select {
+      height: 3rem;
+    }
+
+    input {
+      width: 90%;
+      min-width: 100px
+    }
+
+    select {
+      width: 100%;
+    }
+
+    .searchbar-options {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+
+      &.search {
+        position: relative;
+
+        svg {
+          position: absolute;
+          right: 14%;
+          top: 2.625rem;
+          color: #dde1e3;
+        }
+      }
+    }
+  }
+  
+  .add-more {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .exercise-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+
+    .exercise-card {
+      min-width: 10rem;
+      height: 12rem;
+      text-align: center;
+      -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.1); 
+      box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.1);
+
+      img {
+        width: 100%;
+        height: 7rem;
+      }
+
+      h1 {
+        font-size: 1rem;
+        padding: 1rem;
+        font-weight: 600;
+        margin-top: -6px;
+      }
+
+      p {
+        background: linear-gradient(-90deg, #ff5733, #900c3f);
+        color: #fff;
+        font-weight: 800;
+        padding: 0.21rem;
+      }
+    }
+  }
+
+  button.load-more {
+    font-weight: 800;
+    color: var(--highlight-3);
+  }
 `;

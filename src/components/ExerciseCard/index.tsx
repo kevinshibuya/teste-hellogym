@@ -6,7 +6,7 @@ interface ExerciseCardProps {
     alt: string;
     name: string;
     type: string;
-  }
+  };
 }
 
 export function ExerciseCard({ cardData }: ExerciseCardProps) {

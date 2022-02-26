@@ -4,6 +4,7 @@ export const Container = styled.button`
   min-width: 10rem;
   height: 12rem;
   text-align: center;
+  background: #fff;
   -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.1); 
   box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.1);
 

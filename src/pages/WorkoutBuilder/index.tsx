@@ -1,18 +1,51 @@
 import * as MdIcons from 'react-icons/md';
 import * as RiIcons from 'react-icons/ri';
 import * as FaIcons from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 import { Header } from "../../components/Header";
 import { SectionHeader } from "../../components/SectionHeader";
 import { Sidebar } from "../../components/Sidebar";
+import { ExerciseCard } from '../../components/ExerciseCard';
+import { ExerciseRow } from '../../components/ExerciseRow';
 
 import bicepCurls from "../../assets/bicep-curls.png";
 import tricepPulldown from "../../assets/tricep-pulldown.png";
 import { Container, ExerciseLibrary, Workout } from "./styles";
-import { ExerciseCard } from '../../components/ExerciseCard';
-import { ExerciseRow } from '../../components/ExerciseRow';
+
+interface ExercisesProps {
+  src: string;
+  alt: string;
+  name: string;
+  type: string;
+}
 
 export function WorkoutBuilder() {
+  const [exercises, setExercises] = useState<ExercisesProps[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data = await fetch('/api/exercises')
+        .then(res => res.json());
+
+      setExercises(data.exercises);
+    }
+
+    fetchData();
+  }, []);
+
+  const searchFilter = (exercise: ExercisesProps, search: string) => {
+    return exercise.name.toLowerCase().includes(search.toLowerCase());
+  };
+
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newExercises = [...exercises];
+    const items = exercises.filter(exercise => searchFilter(exercise, event.target.value));
+
+    console.log(items);
+    setExercises(items);
+  };
+
   const bicepsCard = {
     src: bicepCurls,
     alt: 'bicep-curls',
@@ -96,7 +129,13 @@ export function WorkoutBuilder() {
           <div className="searchbar">
             <div className="searchbar-options search">
               <label htmlFor="search">Search</label>
-              <input placeholder="Search exercises..." type="text" name="search" id="search" />
+              <input
+                placeholder="Search exercises..."
+                type="text"
+                name="search"
+                id="search"
+                onChange={(event) => handleSearch(event)}
+              />
               <FaIcons.FaSearch />
             </div>
             <div className="searchbar-options">
@@ -110,18 +149,11 @@ export function WorkoutBuilder() {
             + Add A Custom Exercise
           </button>
           <div className="exercise-list">
-            <ExerciseCard cardData={bicepsCard} />
-            <ExerciseCard cardData={tricepsCard} />
-            <ExerciseCard cardData={bicepsCard} />
-            <ExerciseCard cardData={tricepsCard} />
-            <ExerciseCard cardData={bicepsCard} />
-            <ExerciseCard cardData={tricepsCard} />
-            <ExerciseCard cardData={bicepsCard} />
-            <ExerciseCard cardData={tricepsCard} />
-            <ExerciseCard cardData={bicepsCard} />
-            <ExerciseCard cardData={tricepsCard} />
-            <ExerciseCard cardData={bicepsCard} />
-            <ExerciseCard cardData={tricepsCard} />
+            {exercises.map((exercise, index) => {
+              return (
+                <ExerciseCard key={index} cardData={exercise} />
+              )
+            })}
           </div>
           <button className="load-more">
             Load More Exercises

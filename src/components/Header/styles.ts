@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   padding: 2rem;
 
@@ -67,6 +68,18 @@ export const Container = styled.div`
         width: 40px;
         line-height: 42px;
       }
+    }
+  }
+
+  @media (max-width: 540px) {
+    img {
+      height: 2rem;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    img {
+      height: 1.5rem;
     }
   }
 `

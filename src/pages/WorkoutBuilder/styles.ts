@@ -3,9 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin-left: 6rem;
 
+  @media (max-width: 540px) {
+    margin-left: 4rem;
+  }
+
   .content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: column;
 
     section {
       padding: 2rem;
@@ -34,6 +39,11 @@ export const Container = styled.div`
         color: var(--highlight-2);
         font-weight: 800;
       }
+    }
+
+    @media (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
     }
   }
 `;
@@ -66,6 +76,10 @@ export const Workout = styled.section`
         font-weight: 600;
         border-radius: 0.2rem;
       }
+    }
+
+    .table {
+      overflow-x: auto;
     }
 
     table {
@@ -160,62 +174,6 @@ export const Workout = styled.section`
             }
           }
         }
-
-        tr.exercise {
-          border-bottom: 1px solid #e1e1e2;
-
-          td {
-            .exercise-wrap {
-              display: flex;
-              align-items: center;
-              justify-content: space-around;
-
-              &.input {
-                justify-content: flex-start;
-
-                .input-select {
-                  margin-right: 0.4rem;
-                }
-              }
-
-              &.rest {
-                justify-content: space-between;
-
-                .options {
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                }
-              }
-            }
-
-            img {
-              width: 50px;
-              height: 40px;
-              margin-right: 0.4rem;
-            }
-
-            p {
-              font-weight: 600;
-            }
-
-            svg {
-              width: 2rem;
-              height: 2rem;
-              color: #8c9aaa;
-
-              &.close {
-                width: 1.5rem;
-                height: 1.5rem;
-                background: #ff4545;
-                border-radius: 100%;
-                color: #FFFFFF;
-                padding: 0.2rem;
-                margin: 0 0.4rem;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -224,6 +182,7 @@ export const Workout = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     padding: 2rem;
     margin: 2rem 0;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%2347B3DFFF' stroke-width='4' stroke-dasharray='2%2c 6' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
@@ -290,6 +249,26 @@ export const ExerciseLibrary = styled.section`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
     margin-bottom: 1rem;
+
+    @media (max-width: 1600px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    @media (max-width: 1200px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 800px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    @media (max-width: 400px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   button.load-more {

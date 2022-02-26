@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
   .navbar {
     width: 6rem;
     display: flex;
@@ -18,6 +17,10 @@ export const Container = styled.div`
     .menu-bars {
       font-size: 2rem;
       color: #FFF;
+    }
+    
+    @media (max-width: 540px) {
+      width: 4rem;
     }
   }
 `;

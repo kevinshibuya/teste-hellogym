@@ -48,11 +48,6 @@ export function WorkoutBuilder() {
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
-    // const newExercises = [...exercises];
-    // const items = exercises.filter(exercise => searchFilter(exercise, event.target.value));
-
-    // console.log(items);
-    // setExercises(items);
   };
 
   const bicepsCard = {

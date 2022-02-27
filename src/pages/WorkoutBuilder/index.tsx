@@ -22,28 +22,37 @@ interface ExercisesProps {
 
 export function WorkoutBuilder() {
   const [exercises, setExercises] = useState<ExercisesProps[]>([]);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     async function fetchData() {
       const data = await fetch('/api/exercises')
         .then(res => res.json());
 
+      if (search) {
+        const filteredData = data.exercises.filter((exercise: ExercisesProps) => searchFilter(exercise, search));
+        setExercises(filteredData);
+        return;
+      }
+
       setExercises(data.exercises);
     }
 
     fetchData();
-  }, []);
+  }, [search]);
 
   const searchFilter = (exercise: ExercisesProps, search: string) => {
+    console.log(exercise);
     return exercise.name.toLowerCase().includes(search.toLowerCase());
   };
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newExercises = [...exercises];
-    const items = exercises.filter(exercise => searchFilter(exercise, event.target.value));
+    setSearch(event.target.value);
+    // const newExercises = [...exercises];
+    // const items = exercises.filter(exercise => searchFilter(exercise, event.target.value));
 
-    console.log(items);
-    setExercises(items);
+    // console.log(items);
+    // setExercises(items);
   };
 
   const bicepsCard = {
